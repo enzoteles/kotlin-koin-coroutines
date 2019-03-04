@@ -17,4 +17,7 @@ interface BannerService{
 
     @GET("/categoria")
     fun getCategorias(): Deferred<Response<Categoria>>
+
+    @GET("/produto/maisvendidos")
+    fun getProdutosMaisVendidos(): Deferred<Response<Produto>>
 }

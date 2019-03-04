@@ -37,6 +37,6 @@ class RetrofitB2W(){
             .client(cliente)
             .build()
 
-    fun bannerService() = retrofit.create(BannerService::class.java)
+    fun b2wService() = retrofit.create(BannerService::class.java)
 
 }

@@ -3,6 +3,7 @@ package br.com.desafio.home
 import android.content.Context
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
+import br.com.desafio.service.DataProduto
 import br.com.desafio.service.RetrofitB2W
 import br.com.desafio.util.HttpStatusCodes
 
@@ -30,7 +31,8 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
         getInteractor().loadBanners(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
         //lista de categorias
         getInteractor().loadCategorias(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
-
+        //lista de produtos mais vendidos
+        getInteractor().loadProdutosMaisVendidos(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
     }
 
     override fun getView() = mView as V
@@ -46,6 +48,12 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
     override fun loadCategorias(categorias: List<DataCagetoria>?) {
         if (mView.isAttached()){
             mView.loadCategorias(categorias)
+        }
+    }
+
+    override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
+        if (mView.isAttached()){
+            mView.loadProdutosMaisVendidos(produtos)
         }
     }
 

@@ -5,6 +5,7 @@ import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
+import br.com.desafio.service.DataProduto
 import br.com.desafio.util.WrapperLog
 import org.koin.android.ext.android.inject
 
@@ -24,7 +25,6 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View {
         setContentView(R.layout.activity_main)
 
         initView()
-        initInjection()
         initDate()
     }
 
@@ -40,12 +40,14 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View {
         }
     }
 
-    override fun initView() {
-        mPresenter.initView(this, baseContext)
+    override fun loadProdutosMaisVendidos(produtos: List<DataProduto>?) {
+        produtos!!.forEach {
+            WrapperLog.info("${it.descricao}")
+        }
     }
 
-    override fun initInjection() {
-        //módulo do dagger2
+    override fun initView() {
+        mPresenter.initView(this, baseContext)
     }
 
     override fun initDate() {

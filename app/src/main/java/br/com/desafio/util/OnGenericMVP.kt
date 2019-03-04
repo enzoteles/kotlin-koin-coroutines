@@ -10,7 +10,6 @@ import android.content.Context
 interface OnGenericMVP{
     interface View{
         fun initView()
-        fun initInjection()
         fun initDate()
         fun isAttached(): Boolean
     }

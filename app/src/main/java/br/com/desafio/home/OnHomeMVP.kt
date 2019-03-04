@@ -2,6 +2,7 @@ package br.com.desafio.home
 
 import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
+import br.com.desafio.service.DataProduto
 import br.com.desafio.util.OnGenericMVP
 import br.com.desafio.service.RetrofitB2W
 
@@ -14,22 +15,25 @@ import br.com.desafio.service.RetrofitB2W
 interface OnHomeMVP {
 
     interface View : OnGenericMVP.View {
-        fun loadBanners(msg: List<DataBanner>?)
-        fun msgError(s: String)
+        fun loadBanners(banners: List<DataBanner>?)
+        fun msgError(error: String)
         fun loadCategorias(categorias: List<DataCagetoria>?)
+        fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
     }
 
     interface Presenter<V, I> : OnGenericMVP.Presenter<OnHomeMVP.View, OnHomeMVP.Interactor> {
         fun getView(): V
         fun getInteractor(): I
-        fun loadBanners(msg: List<DataBanner>?)
-        fun loadCategorias(msg: List<DataCagetoria>?)
+        fun loadBanners(banners: List<DataBanner>?)
+        fun loadCategorias(categorias: List<DataCagetoria>?)
+        fun loadProdutosMaisVendidos(produtos: List<DataProduto>?)
         fun error(code: Int)
     }
 
     interface Interactor : OnGenericMVP.Interactor {
         fun loadBanners(callback: HomePresenter<View, Interactor>, retrofit: RetrofitB2W)
         fun loadCategorias(callback: HomePresenter<View, Interactor>, retrofit: RetrofitB2W)
+        fun loadProdutosMaisVendidos(callback: HomePresenter<View, Interactor>, retrofit: RetrofitB2W)
         fun initRetrofit(retrofit: RetrofitB2W)
     }
 }
