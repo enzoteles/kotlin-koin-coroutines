@@ -14,4 +14,7 @@ interface BannerService{
 
     @GET("/banner")
     fun getBanners(): Deferred<Response<Banner>>
+
+    @GET("/categoria")
+    fun getCategorias(): Deferred<Response<Categoria>>
 }

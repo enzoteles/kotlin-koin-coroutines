@@ -4,6 +4,7 @@ import android.os.Bundle
 import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
 import br.com.desafio.service.Data
+import br.com.desafio.service.DataCagetoria
 import br.com.desafio.util.WrapperLog
 import org.koin.android.ext.android.inject
 
@@ -30,6 +31,12 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View {
     override fun loadBanners(banners: List<Data>?) {
         banners!!.forEach {
             WrapperLog.info("${it.linkUrl}")
+        }
+    }
+
+    override fun loadCategorias(categorias: List<DataCagetoria>?) {
+        categorias!!.forEach {
+            WrapperLog.info("${it.descricao}")
         }
     }
 

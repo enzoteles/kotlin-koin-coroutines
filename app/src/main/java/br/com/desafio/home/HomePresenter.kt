@@ -2,9 +2,9 @@ package br.com.desafio.home
 
 import android.content.Context
 import br.com.desafio.service.Data
+import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.RetrofitB2W
 import br.com.desafio.util.HttpStatusCodes
-import br.com.desafio.util.StatusCodes
 
 /**
  * Created by Enzo Teles on 03/03/19
@@ -13,6 +13,7 @@ import br.com.desafio.util.StatusCodes
  */
 
 class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: RetrofitB2W) : OnHomeMVP.Presenter<V, I> {
+
     //variables
     lateinit var mView: OnHomeMVP.View
     lateinit var mInteractor: OnHomeMVP.Interactor
@@ -25,7 +26,11 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
 
     override fun initInteractor(mInteractor: OnHomeMVP.Interactor) {
         this.mInteractor = mInteractor
+        //lista de banners
         getInteractor().loadBanners(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+        //lista de categorias
+        getInteractor().loadCategorias(this as HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit)
+
     }
 
     override fun getView() = mView as V
@@ -35,6 +40,12 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
     override fun loadBanners(banners: List<Data>?) {
         if (mView.isAttached()){
             mView.loadBanners(banners)
+        }
+    }
+
+    override fun loadCategorias(categorias: List<DataCagetoria>?) {
+        if (mView.isAttached()){
+            mView.loadCategorias(categorias)
         }
     }
 

@@ -17,3 +17,15 @@ data class Data(
     val linkUrl: String,
     val urlImagem: String
 ):Serializable
+
+
+data class Categoria(
+    val `data`: List<DataCagetoria>
+): Serializable
+
+
+data class DataCagetoria(
+    val descricao: String,
+    val id: Int,
+    val urlImagem: String
+): Serializable

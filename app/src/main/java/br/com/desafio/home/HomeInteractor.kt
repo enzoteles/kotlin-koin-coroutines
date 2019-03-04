@@ -13,9 +13,9 @@ import retrofit2.HttpException
  * Software Developer Sr.
  */
 
-class HomeInteractor: OnHomeMVP.Interactor{
+class HomeInteractor : OnHomeMVP.Interactor {
 
-    var retro: RetrofitB2W?= null
+    var retro: RetrofitB2W? = null
 
     override fun initRetrofit(retrofit: RetrofitB2W) {
         this.retro = retrofit
@@ -40,5 +40,22 @@ class HomeInteractor: OnHomeMVP.Interactor{
             }
         }
 
+    }
+
+    override fun loadCategorias(callback: HomePresenter<OnHomeMVP.View, OnHomeMVP.Interactor>, retrofit: RetrofitB2W) {
+
+        val request = retrofit.bannerService().getCategorias()
+
+        GlobalScope.launch(Dispatchers.Default) {
+            try {
+                val response = request.await()
+                callback.loadCategorias(response.body()!!.data)
+            } catch (e: HttpException) {
+                WrapperLog.error(e.code().toString())
+                callback.error(e.code())
+            } catch (e: Throwable) {
+                WrapperLog.error(e.stackTrace.toString())
+            }
+        }
     }
 }

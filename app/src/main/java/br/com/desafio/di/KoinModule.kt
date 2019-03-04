@@ -1,7 +1,5 @@
 package br.com.desafio.di
 
-import br.com.desafio.BusinessService
-import br.com.desafio.Controller
 import br.com.desafio.home.HomeInteractor
 import br.com.desafio.home.HomePresenter
 import br.com.desafio.home.OnHomeMVP
