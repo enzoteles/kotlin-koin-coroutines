@@ -9,10 +9,10 @@ import java.io.Serializable
 
 // Api Banner
 data class Banner(
-    val `data`: List<Data>
+    val `data`: List<DataBanner>
 ):Serializable
 
-data class Data(
+data class DataBanner(
     val id: Int,
     val linkUrl: String,
     val urlImagem: String
@@ -29,3 +29,18 @@ data class DataCagetoria(
     val id: Int,
     val urlImagem: String
 ): Serializable
+
+
+data class DataProduto(
+    val categoria: DataCagetoria,
+    val descricao: String,
+    val id: Int,
+    val nome: String,
+    val precoDe: Int,
+    val precoPor: Double,
+    val urlImagem: String
+)
+
+data class Produto(
+    val `data`: List<DataProduto>
+)

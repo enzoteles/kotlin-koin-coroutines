@@ -1,6 +1,6 @@
 package br.com.desafio.home
 
-import br.com.desafio.service.Data
+import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.util.OnGenericMVP
 import br.com.desafio.service.RetrofitB2W
@@ -14,7 +14,7 @@ import br.com.desafio.service.RetrofitB2W
 interface OnHomeMVP {
 
     interface View : OnGenericMVP.View {
-        fun loadBanners(msg: List<Data>?)
+        fun loadBanners(msg: List<DataBanner>?)
         fun msgError(s: String)
         fun loadCategorias(categorias: List<DataCagetoria>?)
     }
@@ -22,7 +22,7 @@ interface OnHomeMVP {
     interface Presenter<V, I> : OnGenericMVP.Presenter<OnHomeMVP.View, OnHomeMVP.Interactor> {
         fun getView(): V
         fun getInteractor(): I
-        fun loadBanners(msg: List<Data>?)
+        fun loadBanners(msg: List<DataBanner>?)
         fun loadCategorias(msg: List<DataCagetoria>?)
         fun error(code: Int)
     }

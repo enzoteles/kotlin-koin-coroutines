@@ -3,7 +3,7 @@ package br.com.desafio.home
 import android.os.Bundle
 import br.com.desafio.R
 import br.com.desafio.base.BaseActivity
-import br.com.desafio.service.Data
+import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.util.WrapperLog
 import org.koin.android.ext.android.inject
@@ -28,7 +28,7 @@ class HomeActivity : BaseActivity(), OnHomeMVP.View {
         initDate()
     }
 
-    override fun loadBanners(banners: List<Data>?) {
+    override fun loadBanners(banners: List<DataBanner>?) {
         banners!!.forEach {
             WrapperLog.info("${it.linkUrl}")
         }

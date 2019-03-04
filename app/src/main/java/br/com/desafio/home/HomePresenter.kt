@@ -1,7 +1,7 @@
 package br.com.desafio.home
 
 import android.content.Context
-import br.com.desafio.service.Data
+import br.com.desafio.service.DataBanner
 import br.com.desafio.service.DataCagetoria
 import br.com.desafio.service.RetrofitB2W
 import br.com.desafio.util.HttpStatusCodes
@@ -37,7 +37,7 @@ class HomePresenter<V : OnHomeMVP.View, I : OnHomeMVP.Interactor>(val retrofit: 
 
     override fun getInteractor() = mInteractor as I
 
-    override fun loadBanners(banners: List<Data>?) {
+    override fun loadBanners(banners: List<DataBanner>?) {
         if (mView.isAttached()){
             mView.loadBanners(banners)
         }
